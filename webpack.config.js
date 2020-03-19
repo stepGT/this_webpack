@@ -18,5 +18,19 @@ module.exports = {
       template: './index.html'
     }),
     new CleanWebpackPlugin()
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { injectType: 'singletonStyleTag' },
+          },
+          'css-loader',
+        ]
+      }
+    ]
+  }
 };
