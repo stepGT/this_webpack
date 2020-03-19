@@ -1,5 +1,5 @@
-@import "~normalize.css";
-@import "fonts.css";
+@import 'fonts.scss';
+@import '~bootstrap/scss/bootstrap';
 .container {
   padding-top: 2rem;
   max-width: 1000px;
