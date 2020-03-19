@@ -26,12 +26,30 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|jpeg|jpg|svg|gif)$/i,
-        use: ['file-loader']
+        test: /\.(jpg|png|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: './assets/imgs',
+              useRelativePath: true
+            }
+          }
+        ]
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/i,
-        use: ['file-loader']
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: './assets/fonts',
+              useRelativePath: true
+            }
+          }
+        ]
       }
     ]
   }
