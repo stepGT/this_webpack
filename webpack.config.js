@@ -26,12 +26,12 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|jpeg|jpg|svg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-          }
-        ]
+        test: /\.(png|jpeg|jpg|svg|gif)$/i,
+        use: ['file-loader']
+      },
+      {
+        test: /\.(ttf|woff|woff2|eot)$/i,
+        use: ['file-loader']
       }
     ]
   }

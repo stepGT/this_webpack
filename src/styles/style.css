@@ -1,11 +1,13 @@
+@import "fonts.css";
 .container {
   padding-top: 2rem;
   max-width: 1000px;
   margin: 0 auto;
-  background: url('../assets/irbis_1.jpg') no-repeat;
+  background: url('../assets/imgs/irbis_1.jpg') no-repeat;
   width: 517px;
   height: 899px;
 }
 h1 {
+  font-family: 'Roboto', sans-serif;
   text-align: center;
 }

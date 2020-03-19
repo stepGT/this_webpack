@@ -1,2 +1,2 @@
 import './styles/style.css';
-import './assets/irbis_1.jpg';
+import './assets/imgs/irbis_1.jpg';
