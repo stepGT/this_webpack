@@ -6,11 +6,10 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
-    main: './index.js',
-    analytics: './analytics.js'
+    main: './index.js'
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: 'assets/js/[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
