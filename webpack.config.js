@@ -22,13 +22,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpeg|jpg|svg|gif)$/,
         use: [
           {
-            loader: 'style-loader',
-            options: { injectType: 'singletonStyleTag' },
-          },
-          'css-loader',
+            loader: 'file-loader',
+          }
         ]
       }
     ]

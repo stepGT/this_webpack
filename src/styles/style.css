@@ -2,6 +2,9 @@
   padding-top: 2rem;
   max-width: 1000px;
   margin: 0 auto;
+  background: url('../assets/irbis_1.jpg') no-repeat;
+  width: 517px;
+  height: 899px;
 }
 h1 {
   text-align: center;
