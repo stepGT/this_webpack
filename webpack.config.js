@@ -14,16 +14,31 @@ module.exports = {
     filename: 'assets/js/[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
   },
+  resolve: {
+    extensions: ['.js', '.json'],
+    alias: {
+      '@models': path.resolve(__dirname, 'src/models'),
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+  devServer: {
+    port: 7777
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
     new CleanWebpackPlugin(),
-    new webpack.ProvidePlugin({
+    /*new webpack.ProvidePlugin({
       $: 'jquery',
       JQuery: 'jquery',
       'window.JQuery': 'jquery'
-    }),
+    }),*/
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
     }),
