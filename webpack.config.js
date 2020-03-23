@@ -5,6 +5,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const isDev    = process.env.NODE_ENV === 'development';
+const isProd   = !isDev;
+const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
@@ -12,7 +16,7 @@ module.exports = {
     main: './index.js'
   },
   output: {
-    filename: 'assets/js/[name].[contenthash].js',
+    filename: 'assets/js/' + filename('js'),
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
@@ -28,20 +32,19 @@ module.exports = {
     }
   },
   devServer: {
-    port: 7777
+    port: 7777,
+    hot: isDev
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './index.html',
+      minify: {
+        collapseWhitespace: isProd
+      }
     }),
     new CleanWebpackPlugin(),
-    /*new webpack.ProvidePlugin({
-      $: 'jquery',
-      JQuery: 'jquery',
-      'window.JQuery': 'jquery'
-    }),*/
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
+      filename: filename('css')
     }),
     new CopyWebpackPlugin([
       {
@@ -53,9 +56,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+              reloadAll: true
+            }
+          },
           'css-loader',
           'sass-loader'
         ]
